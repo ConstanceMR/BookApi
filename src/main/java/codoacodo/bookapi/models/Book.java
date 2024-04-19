@@ -1,9 +1,6 @@
 package codoacodo.bookapi.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,17 +13,23 @@ public class Book {
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String titulo;
-    private String autor;
-    private String genero;
-    private String anio;
-    private Double precio;
+    private String title;
+    private String author;
+    private String genre;
+    private String yearOfPublication;
+    private Double price;
 
-    public Book(String titulo, String autor, String genero, String anio, Double precio) {
-        this.titulo = titulo;
-        this.autor = autor;
-        this.genero = genero;
-        this.anio= this.anio;
-        this.precio = precio;
+    @ManyToOne
+    //atributo con el que se van a relacionar
+    @JoinColumn(name = "editorial_id")
+    private Editorial editorial;
+
+
+    public Book(String title, String author, String genre, String yearOfPublication, Double price) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.yearOfPublication = yearOfPublication;
+        this.price = price;
     }
 }

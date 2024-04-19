@@ -17,8 +17,8 @@ public class EditorialService {
         return editorialRepository.findAll();
     }
 
-    public Optional<Editorial> findEditorialById(Long id) {
-        return editorialRepository.findById(id);
+    public Editorial findEditorialById(Long id) {
+        return editorialRepository.findById(id).orElse(null);
     }
 
     public void createEditorial(Editorial editorial) {

@@ -21,7 +21,7 @@ public class EditorialController {
 
     @GetMapping("/{id}")
     public Optional<Editorial> findEditorialById(@PathVariable Long id){
-        return editorialService.findEditorialById(id);
+        return Optional.ofNullable(editorialService.findEditorialById(id));
     }
 
     @PostMapping("/add")
@@ -38,4 +38,5 @@ public class EditorialController {
     public Optional<Editorial> updateEditorial(@RequestBody Editorial editorial){
         return editorialService.updateEditorial(editorial);
     }
+
 }
